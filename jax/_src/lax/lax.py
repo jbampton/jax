@@ -2560,7 +2560,7 @@ def _add_transpose(t, x, y):
   # assert ad.is_undefined_primal(x) and ad.is_undefined_primal(y)
   return [t, t]
 
-add_p = standard_naryop([_num, _num], 'add')
+add_p = standard_naryop([_any, _any], 'add')
 ad.defjvp(add_p, lambda g, x, y: _brcast(g, y), lambda g, x, y: _brcast(g, x))
 ad.primitive_transposes[add_p] = _add_transpose
 def _add_inverse(r, x, y):
