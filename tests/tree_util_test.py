@@ -277,6 +277,14 @@ class TreeTest(jtu.JaxTestCase):
                                       FlatCache({"a": [3, 4], "b": [5, 6]}))
     self.assertEqual(expected, actual)
 
+  @parameterized.parameters(*TREES)
+  def testStringRepresentation(self, tree):
+    """Check that the string representation of a tree works."""
+    # Since we do not want to enforce a specific string representation we only
+    # check that it runs without error and returns a non-empty string.
+    treedef = tree_util.tree_structure(tree)
+    self.assertTrue(str(treedef))
+
 
 class RavelUtilTest(jtu.JaxTestCase):
 
